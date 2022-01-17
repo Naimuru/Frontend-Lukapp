@@ -1,3 +1,8 @@
+<?php
+use App\Http\Controllers\ProductControler;
+?>
+
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -8,14 +13,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Menú Principal</a>
+      <a class="navbar-brand" href="/">Menú Principal</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Ingresos</a></li>
-        <li><a href="#">Gastos fijos</a></li>
+        <li><a href="/detail">Gastos fijos</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -32,6 +37,18 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+      <ul class="nav navbar-nav navbar-right">
+      @if(Session::has('user'))
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+          @else
+          <li><a href="/login">Login</a></li>
+          @endif
           </ul>
         </li>
       </ul>
